@@ -3,8 +3,7 @@
 # This file is created from the jx-requirements.yml and jx-global-values.yaml files.
 # For more information see: https://jenkins-x.io/v3/develop/apps/#using-requirements-in-charts
 jx:
-  imagePullSecrets:
-  - tekton-container-registry-auth
+  imagePullSecrets: []
   pipelineVariables: {}
   releaseCRD: true
   secrets:
@@ -21,31 +20,27 @@ jxRequirements:
     enabled: false
     schedule: ""
   cluster:
-    chartKind: pages
-    chartRepository: https://github.com/jenkins-x-bdd/repo.git
-    clusterName: kind
     devEnvApprovers:
     - todo
     environmentGitOwner: todo
     gitKind: github
     gitName: github
     gitServer: https://github.com
-    provider: kubernetes
-    registry: ghcr.io
+    provider: eks
   environments:
   - key: dev
   - key: staging
+  - key: production
   ingress:
     domain: change.me
-    ignoreLoadBalancer: true
     kind: ingress
-    namespaceSubDomain: .metallb-system.
+    namespaceSubDomain: -secret-infra.
     tls:
       email: ""
       enabled: false
       production: false
-  repository: bucketrepo
-  secretStorage: local
+  repository: nexus
+  secretStorage: vault
   vault: {}
   webhook: lighthouse
 jxRequirementsIngressExternalDNS:
@@ -57,4 +52,4 @@ jxRequirementsKuberhealthy:
 jxRequirementsTLSCheck:
   enabled: false
 jxRequirementsVault:
-  enabled: false
+  enabled: true
