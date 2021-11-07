@@ -33,9 +33,10 @@ REPOSITORY_RESOLVE ?= repository-resolve
 GITOPS_WEBHOOK_UPDATE ?= gitops-webhook-update
 
 # these values are only required for vault - you can ignore if you are using a cloud secret store
-VAULT_ADDR ?= https://vault.jx-vault:8200
+VAULT_ADDR ?= http://vault.jx-vault:8200
 VAULT_NAMESPACE ?= jx-vault
 VAULT_ROLE ?= jx-vault
+EXTERNAL_VAULT ?= false
 
 GIT_SHA ?= $(shell git rev-parse HEAD)
 
@@ -222,7 +223,7 @@ verify-ignore: verify-ingress-ignore
 secrets-populate:
 # lets populate any missing secrets we have a generator in `charts/repoName/chartName/secret-schema.yaml`
 # they can be modified/regenerated at any time via `jx secret edit`
-	-VAULT_ADDR=$(VAULT_ADDR) VAULT_NAMESPACE=$(VAULT_NAMESPACE) jx secret populate --secret-namespace $(VAULT_NAMESPACE)
+	-VAULT_ADDR=$(VAULT_ADDR) VAULT_NAMESPACE=$(VAULT_NAMESPACE) EXTERNAL_VAULT=$(EXTERNAL_VAULT) jx secret populate --secret-namespace $(VAULT_NAMESPACE)
 
 
 .PHONY: secrets-wait
