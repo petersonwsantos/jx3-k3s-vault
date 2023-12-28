@@ -33,6 +33,4 @@ spec:
     username: petersonwsantos
   repository: bucketrepo
   secretStorage: vault
-  vault:
-    url: vault.jx-vault:8200 
   webhook: lighthouse
