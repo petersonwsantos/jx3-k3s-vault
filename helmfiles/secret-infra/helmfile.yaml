@@ -7,13 +7,11 @@ namespace: secret-infra
 repositories:
 - name: external-secrets
   url: https://external-secrets.github.io/kubernetes-external-secrets
-- name: banzaicloud-stable
-  url: https://kubernetes-charts.banzaicloud.com
 - name: jxgh
   url: https://jenkins-x-charts.github.io/repo
 releases:
 - chart: external-secrets/kubernetes-external-secrets
-  version: 8.3.0
+  version: 8.5.5
   name: kubernetes-external-secrets
   values:
   - ../../versionStream/charts/external-secrets/kubernetes-external-secrets/values.yaml.gotmpl

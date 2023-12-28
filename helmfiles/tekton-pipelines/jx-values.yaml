@@ -46,8 +46,7 @@ jxRequirements:
       production: false
   repository: bucketrepo
   secretStorage: vault
-  vault:
-    url: 127.0.0.1:8200
+  vault: {}
   webhook: lighthouse
 jxRequirementsIngressExternalDNS:
   enabled: false
