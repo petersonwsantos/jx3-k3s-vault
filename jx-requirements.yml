@@ -34,5 +34,5 @@ spec:
   repository: bucketrepo
   secretStorage: vault
   vault:
-    url: api-port:8200
+    url: vault.jx-vault:8200 
   webhook: lighthouse
