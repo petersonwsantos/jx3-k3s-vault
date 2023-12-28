@@ -22,7 +22,7 @@ spec:
   ingress:
     domain: ""
     externalDNS: false
-    ignoreLoadBalancer: true
+    ignoreLoadBalancer: false
     kind: ingress
     namespaceSubDomain: .jx.
     tls:
@@ -31,4 +31,6 @@ spec:
       production: false
   repository: bucketrepo
   secretStorage: vault
+  vault:
+    url: "api-port:8200"
   webhook: lighthouse
